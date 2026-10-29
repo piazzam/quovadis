@@ -1,0 +1,58 @@
+# QUOVADIS reproducibility environment
+# Python: 3.10.20
+# Tested hardware: NVIDIA Tesla T4 (15 GB)
+# Tested driver: 580.95.05
+# CUDA reported by nvidia-smi: 13.0
+#
+# GPU runtime packages (nvidia-cuda-*, nvidia-cudnn-*, etc.) are intentionally
+# not pinned here. They are installed as dependencies of TensorFlow/PyTorch and
+# depend on the operating system and available wheel index.
+
+# Core numerical and data stack
+numpy==1.26.4
+scipy==1.15.3
+pandas==1.4.4
+scikit-learn==1.4.1.post1
+scikit-image==0.24.0
+Pillow==10.2.0
+h5py==3.11.0
+opencv-python==4.11.0.86
+tqdm==4.67.3
+PyYAML==6.0.1
+
+# TensorFlow/Keras stack
+tensorflow==2.15.1
+keras==2.15.0
+tf-keras==2.15.1
+tensorflow-datasets==4.9.9
+tensorflow-probability==0.23.0
+Xplique==1.4.0
+ml-dtypes==0.3.2
+protobuf==4.25.9
+
+# PyTorch/ImageNet stack
+torch==2.11.0
+torchvision==0.26.0
+timm==1.0.26
+grad-cam==1.5.5
+ttach==0.0.3
+captum>=0.7,<1
+detectors
+
+# Explanation methods
+shap==0.44.1
+lime==0.2.0.1
+numba==0.59.0
+llvmlite==0.42.0
+slicer==0.0.7
+
+# Dataset loading and ImageNet sample storage
+datasets==4.8.5
+huggingface_hub==1.8.0
+pyarrow==24.0.0
+
+# SHAP-BPT (used in the thesis comparison)
+shap-bpt==1.0.1
+
+# Test dependency
+pytest>=7

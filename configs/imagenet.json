@@ -1,0 +1,128 @@
+{
+  "seed": 42,
+  "data": {
+    "name": "imagenet",
+    "parquet": "../data/imagenet1k_val_sampled10K.parquet",
+    "split": "train"
+  },
+  "model": {
+    "framework": "torch",
+    "name": "vit_base_patch16_224",
+    "pretrained": true,
+    "num_classes": 1000,
+    "batch_size": 64
+  },
+  "explainers": {
+    "quovadis": {
+      "solution": "banzhaf",
+      "aggregation": "median",
+      "configuration": "A",
+      "blur_kernel": [
+        11,
+        11
+      ],
+      "removal_strategy": "average_blur",
+      "black_value": 0.0
+    },
+    "integrated_gradients": {
+      "steps": 50,
+      "baseline": 0.0
+    },
+    "gradcam_vit": {},
+    "lime": {
+      "num_samples": 1000,
+      "batch_size": 10,
+      "baseline": 0.0,
+      "seed": 42
+    },
+    "partition_shap": {
+      "max_evals": 500,
+      "batch_size": 16,
+      "blur": [
+        16,
+        16
+      ]
+    },
+    "occlusion": {
+      "window": [
+        16,
+        16
+      ],
+      "stride": [
+        4,
+        4
+      ],
+      "baseline": 0.0,
+      "batch_size": 16
+    },
+    "shap_bpt": {
+      "max_evals": 254,
+      "baseline": 0.0,
+      "method": "BPT",
+      "batch_size": 16,
+      "balance_area": false,
+      "min_area": 1,
+      "verbose": false
+    }
+  },
+  "metrics": {
+    "road": {
+      "percentages": [
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        0.9
+      ],
+      "direction": "morf",
+      "noise_sigma": 0.01,
+      "seed": 42
+    },
+    "saco": {
+      "groups": 10
+    },
+    "infidelity": {
+      "patch_sizes": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29
+      ],
+      "num_samples": 1000,
+      "all_patches": false,
+      "apply_beta": true,
+      "seed": 42
+    },
+    "sensitivity": {
+      "epsilon": 0.1,
+      "n_perturbations": 50,
+      "clip_values": "dataset_range",
+      "seed": 42
+    },
+    "complexity": {}
+  }
+}

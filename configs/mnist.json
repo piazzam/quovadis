@@ -1,0 +1,118 @@
+{
+  "seed": 42,
+  "data": {
+    "name": "mnist"
+  },
+  "model": {
+    "framework": "tensorflow",
+    "checkpoint": "../checkpoints/mnist_model.h5",
+    "num_classes": 10,
+    "batch_size": 512,
+    "architecture": "cnn_s",
+    "checkpoint_type": "auto"
+  },
+  "explainers": {
+    "quovadis": {
+      "solution": "banzhaf",
+      "aggregation": "median",
+      "configuration": "A",
+      "blur_kernel": [
+        11,
+        11
+      ],
+      "removal_strategy": "average_blur",
+      "black_value": 0.0
+    },
+    "integrated_gradients": {
+      "steps": 50,
+      "baseline": 0.0,
+      "batch_size": 1
+    },
+    "gradcam": {
+      "batch_size": 1
+    },
+    "gradcampp": {
+      "batch_size": 1
+    },
+    "lime": {
+      "num_samples": 1000,
+      "batch_size": 10,
+      "baseline": 0.0,
+      "seed": 42
+    },
+    "partition_shap": {
+      "max_evals": 500,
+      "batch_size": 64,
+      "blur": [
+        16,
+        16
+      ]
+    },
+    "occlusion": {
+      "window": [
+        16,
+        16
+      ],
+      "stride": [
+        4,
+        4
+      ],
+      "baseline": 0.0,
+      "batch_size": 64
+    },
+    "shap_bpt": {
+      "max_evals": 254,
+      "baseline": 0.0,
+      "method": "BPT",
+      "batch_size": 64,
+      "balance_area": false,
+      "min_area": 1,
+      "verbose": false
+    }
+  },
+  "metrics": {
+    "road": {
+      "percentages": [
+        0.1,
+        0.3,
+        0.5,
+        0.7,
+        0.9
+      ],
+      "direction": "morf",
+      "noise_sigma": 0.01,
+      "seed": 42
+    },
+    "saco": {
+      "groups": 10
+    },
+    "infidelity": {
+      "patch_sizes": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "num_samples": 1000,
+      "all_patches": true,
+      "apply_beta": true,
+      "seed": 42
+    },
+    "sensitivity": {
+      "epsilon": 0.1,
+      "n_perturbations": 50,
+      "clip_values": [
+        0.0,
+        1.0
+      ],
+      "seed": 42
+    },
+    "complexity": {}
+  }
+}

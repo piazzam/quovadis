@@ -1,0 +1,43 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+
+# PyTorch stack used for CIFAR-100
+torch==2.5.1+cu121
+torchvision==0.20.1+cu121
+timm==1.0.27
+detectors==0.1.11
+captum>=0.7,<1
+grad-cam>=1.5,<2
+ttach>=0.0.3,<1
+
+# TensorFlow / Xplique stack
+tensorflow==2.15.1
+keras==2.15.0
+tf-keras==2.15.1
+Xplique==1.4.0
+
+# Explanation methods
+shap==0.49.1
+lime==0.2.0.1
+
+# Numerical and image-processing stack
+numpy==1.26.4
+scipy==1.13.1
+pandas==2.3.3
+scikit-learn==1.6.1
+scikit-image==0.24.0
+opencv-python==4.11.0.86
+pillow==11.3.0
+h5py==3.14.0
+
+# Dataset and utility packages
+datasets==4.5.0
+pyarrow==21.0.0
+tqdm==4.67.3
+PyYAML==6.0.3
+requests==2.32.5
+
+# SHAP-BPT (used in the thesis comparison)
+shap-bpt==1.0.1
+
+# Test dependency
+pytest>=7
